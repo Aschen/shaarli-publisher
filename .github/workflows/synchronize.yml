@@ -1,0 +1,29 @@
+name: Synchronize two Shaarli instances
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    # Every day at 23:00
+    - cron: "0 23 * * *"
+
+jobs:
+  synchronize-shaarlis:
+    name: 🧪 Synchronize two Shaarli instances
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: 🚀 Synchronize Shaarli
+        run: bun synchronize.ts
+        env:
+          SHAARLI_SOURCE_URL: ${{ secrets.SHAARLI_ASCHEN_URL }}
+          SHAARLI_SOURCE_SECRET: ${{ secrets.SHAARLI_ASCHEN_KEY }}
+          SHAARLI_TARGET_URL: ${{ secrets.SHAARLI_GENAI_URL }}
+          SHAARLI_TARGET_SECRET: ${{ secrets.SHAARLI_GENAI_KEY }}
