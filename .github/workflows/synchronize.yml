@@ -23,7 +23,7 @@ jobs:
       - name: 🚀 Synchronize Shaarli
         run: bun synchronize.ts
         env:
-          SHAARLI_SOURCE_URL: ${{ secrets.SHAARLI_ASCHEN_URL }}
+          SHAARLI_SOURCE_URL: "https://links.aschen.tech/api/v1"
           SHAARLI_SOURCE_SECRET: ${{ secrets.SHAARLI_ASCHEN_KEY }}
-          SHAARLI_TARGET_URL: ${{ secrets.SHAARLI_GENAI_URL }}
+          SHAARLI_TARGET_URL: "https://news.gen-ai.fr/api/v1"
           SHAARLI_TARGET_SECRET: ${{ secrets.SHAARLI_GENAI_KEY }}
