@@ -10,11 +10,15 @@ function getEnv(name: string) {
   return value;
 }
 
+const tags = getEnv("TAGS")
+  .split(",")
+  .map((t) => t.trim());
+
 const linksAi = await listLinks({
   url: getEnv("SHAARLI_SOURCE_URL"),
   secret: getEnv("SHAARLI_SOURCE_SECRET"),
   limit: 20,
-  searchtags: "c-ai",
+  searchtags: tags.join(","),
 });
 
 for (const link of linksAi.reverse()) {
@@ -24,7 +28,7 @@ for (const link of linksAi.reverse()) {
     linkUrl: link.url,
     title: link.title,
     description: link.description,
-    tags: link.tags.filter((tag) => tag !== "c-ai"),
+    tags: link.tags.filter((tag) => !tags.includes(tag)),
   });
 }
 

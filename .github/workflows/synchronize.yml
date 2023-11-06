@@ -27,3 +27,4 @@ jobs:
           SHAARLI_SOURCE_SECRET: ${{ secrets.SHAARLI_ASCHEN_KEY }}
           SHAARLI_TARGET_URL: "https://news.gen-ai.fr/api/v1"
           SHAARLI_TARGET_SECRET: ${{ secrets.SHAARLI_GENAI_KEY }}
+          TAGS: "c-ai"
