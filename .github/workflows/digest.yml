@@ -1,0 +1,33 @@
+name: Generate an HTML digest of this week links
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    # Every sunday at 11:00
+    - cron: "0 11 * * 0"
+
+jobs:
+  generate-digest:
+    name: 🧪 Generate an HTML digest of this week links
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: 🚀 Generate digest
+        run: bun digest.ts
+        env:
+          SHAARLI_URL: "https://news.gen-ai.fr/api/v1"
+          SHAARLI_SECRET: ${{ secrets.SHAARLI_GENAI_KEY }}
+
+      - name: 📦 Upload digest
+        uses: actions/upload-artifact@v3
+        with:
+          name: digest
+          path: digest.html

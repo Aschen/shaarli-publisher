@@ -31,12 +31,14 @@ export async function listLinks({
   offset,
   limit,
   searchtags,
+  date,
 }: {
   secret: string;
   url: string;
   offset?: number;
   limit?: number;
   searchtags?: string;
+  date?: Date;
 }): Promise<Link[]> {
   const params = new URLSearchParams();
 
@@ -59,7 +61,13 @@ export async function listLinks({
     throw new Error(`Error: ${response.status}`);
   }
 
-  return response.json();
+  const links = await response.json();
+
+  if (date) {
+    return links.filter((link) => new Date(link.created) > date);
+  }
+
+  return links;
 }
 
 export async function tryCreateLink({
