@@ -24,7 +24,10 @@ function groupLinksByTags(links: Link[]): Record<string, Link[]> {
   const groupedLinks: Record<string, Link[]> = {
     "prompt-engineering": [],
     "assistant-ai": [],
+    "retrieval-augmented-generation": [],
     "text-ai": [],
+    "image-ai": [],
+    "video-ai": [],
     others: [],
   };
 
@@ -84,8 +87,11 @@ function generateHTMLDigest(groupedLinks: Record<string, Link[]>): string {
   const groupTitles: Record<string, string> = {
     "prompt-engineering": "⚙️ Prompt Engineering",
     "assistant-ai": "🤖 Agents LLM",
+    "retrieval-augmented-generation": "🔍 Retrieval-Augmented-Generation",
     "text-ai": "🧠 Large-Language-Models",
-    others: "🎨 Image et Vidéo",
+    "image-ai": "🎨 Image",
+    "video-ai": "🎥 Video",
+    others: "📰 Autres",
   };
 
   let html = "";
@@ -102,7 +108,7 @@ function generateHTMLDigest(groupedLinks: Record<string, Link[]>): string {
   }
 
   html +=
-    '<p><i>Generative AI France est une newsletter technique francophone. Retrouvez nous sur <a href="https://gen-ai.fr">https://gen-ai.fr</a></i></p>';
+    '<span><i>Generative AI France est une newsletter technique francophone. Retrouvez nous sur <a href="https://gen-ai.fr">https://gen-ai.fr</a></i></span>';
 
   return html;
 }
