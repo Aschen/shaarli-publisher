@@ -21,7 +21,7 @@ jobs:
           bun-version: latest
 
       - name: 🚀 Generate digest
-        run: bun digest.ts
+        run: NODE_TLS_REJECT_UNAUTHORIZED=0 bun digest.ts
         env:
           SHAARLI_URL: "https://news.gen-ai.fr/api/v1"
           SHAARLI_SECRET: ${{ secrets.SHAARLI_GENAI_KEY }}

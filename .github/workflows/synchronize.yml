@@ -21,7 +21,7 @@ jobs:
           bun-version: latest
 
       - name: 🚀 Synchronize Shaarli
-        run: bun synchronize.ts
+        run: NODE_TLS_REJECT_UNAUTHORIZED=0 bun synchronize.ts
         env:
           SHAARLI_SOURCE_URL: "https://links.aschen.tech/api/v1"
           SHAARLI_SOURCE_SECRET: ${{ secrets.SHAARLI_ASCHEN_KEY }}
