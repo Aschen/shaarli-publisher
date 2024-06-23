@@ -3,10 +3,6 @@ name: Generate an HTML digest of this week links
 on:
   workflow_dispatch:
 
-  schedule:
-    # Every sunday at 11:00
-    - cron: "0 11 * * 0"
-
 jobs:
   generate-digest:
     name: 🧪 Generate an HTML digest of this week links
