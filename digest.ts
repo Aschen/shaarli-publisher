@@ -98,7 +98,7 @@ function generateHTMLDigest(groupedLinks: Record<string, Link[]>): string {
 
   html += '<img src="https://aschen.ovh/banner.png"/>\n';
   html +=
-    "<p><i>Retrouvez un résumé de l'actualité Generative AI en français sélectionnée par Olivier Cavadenti et Adrien Maret.</i></p>";
+    "<p><i>Retrouvez un résumé de l'actualité Generative AI en français sélectionnée par Adrien Maret.</i></p>";
   for (const group in groupedLinks) {
     html += `<h2>${groupTitles[group] || group}</h2>\n`;
     groupedLinks[group].forEach((link) => {
