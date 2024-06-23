@@ -3,10 +3,6 @@ name: Synchronize two Shaarli instances
 on:
   workflow_dispatch:
 
-  schedule:
-    # Every day at 23:00
-    - cron: "0 23 * * *"
-
 jobs:
   synchronize-shaarlis:
     name: 🧪 Synchronize two Shaarli instances
